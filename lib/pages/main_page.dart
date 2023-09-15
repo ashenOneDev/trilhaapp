@@ -40,10 +40,7 @@ class _MainPageState extends State<MainPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const DadosCadastroPage(
-                                  texto: "Meus Dados",
-                                  dados: ["Nome", "Endereço"],
-                                )));
+                            builder: (context) => const DadosCadastroPage()));
                   },
                 ),
                 const SizedBox(
