@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaap/pages/dados_cadastro_page.dart';
 import 'package:trilhaap/pages/three_page.dart';
 import 'package:trilhaap/pages/two_page.dart';
+import 'package:trilhaap/shared/widgets/custom_drawer.dart';
 
 import 'one_page.dart';
 
@@ -23,54 +23,7 @@ class _MainPageState extends State<MainPage> {
         appBar: AppBar(
           title: const Text("Main Page"),
         ),
-        drawer: Drawer(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InkWell(
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 5),
-                      width: double.infinity,
-                      child: const Text("Meus Dados")),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const DadosCadastroPage()));
-                  },
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Divider(),
-                InkWell(
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 5),
-                      width: double.infinity,
-                      child: const Text("Configurações")),
-                  onTap: () {},
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Divider(),
-                InkWell(
-                  child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 0, vertical: 5),
-                      width: double.infinity,
-                      child: const Text("Termos de uso e privacidade")),
-                  onTap: () {},
-                )
-              ],
-            ),
-          ),
-        ),
+        drawer: const CustomDrawer(),
         body: Column(
           children: [
             Expanded(
