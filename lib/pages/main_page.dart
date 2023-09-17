@@ -3,7 +3,7 @@ import 'package:trilhaap/pages/three_page.dart';
 import 'package:trilhaap/pages/two_page.dart';
 import 'package:trilhaap/shared/widgets/custom_drawer.dart';
 
-import 'one_page.dart';
+import 'card_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -36,7 +36,7 @@ class _MainPageState extends State<MainPage> {
                 },
                 scrollDirection: Axis.vertical,
                 children: const [
-                  OnePage(),
+                  CardPage(),
                   TwoPage(),
                   ThreePage(),
                 ],
