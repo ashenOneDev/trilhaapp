@@ -46,8 +46,8 @@ class CustomDrawer extends StatelessWidget {
                   child: Image.network(
                       "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
                 ),
-                accountName: Text("Iago Cavalcante"),
-                accountEmail: Text("email@email.com")),
+                accountName: const Text("Iago Cavalcante"),
+                accountEmail: const Text("email@email.com")),
           ),
           InkWell(
             child: Container(
