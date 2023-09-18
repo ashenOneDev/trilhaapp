@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:trilhaap/pages/three_page.dart';
-import 'package:trilhaap/pages/two_page.dart';
+import 'package:trilhaap/pages/list_view_v_page.dart';
+import 'package:trilhaap/pages/image_assets_page.dart';
 import 'package:trilhaap/shared/widgets/custom_drawer.dart';
 
 import 'card_page.dart';
+import 'list_view_h_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -34,24 +35,30 @@ class _MainPageState extends State<MainPage> {
                     posicaoPagina = value;
                   });
                 },
-                scrollDirection: Axis.vertical,
+                scrollDirection: Axis.horizontal,
                 children: const [
                   CardPage(),
-                  TwoPage(),
-                  ThreePage(),
+                  ImageAssetsPage(),
+                  ListViewVPage(),
+                  ListViewHPage(),
                 ],
               ),
             ),
             BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
                 onTap: (value) {
                   pageController.jumpToPage(value);
                 },
                 currentIndex: posicaoPagina,
                 items: const [
-                  BottomNavigationBarItem(label: "One", icon: Icon(Icons.home)),
-                  BottomNavigationBarItem(label: "Two", icon: Icon(Icons.add)),
                   BottomNavigationBarItem(
-                      label: "Three", icon: Icon(Icons.person))
+                      label: "Card", icon: Icon(Icons.home)),
+                  BottomNavigationBarItem(
+                      label: "Img Assets", icon: Icon(Icons.add)),
+                  BottomNavigationBarItem(
+                      label: "List View V", icon: Icon(Icons.person)),
+                  BottomNavigationBarItem(
+                      label: "List View H", icon: Icon(Icons.telegram))
                 ])
           ],
         ),

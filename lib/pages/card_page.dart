@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaap/model/card_detail.dart';
 import 'package:trilhaap/pages/card_detail_page.dart';
+import 'package:trilhaap/repositories/card_detail_repository.dart';
 
 class CardPage extends StatefulWidget {
   const CardPage({super.key});
@@ -10,11 +11,20 @@ class CardPage extends StatefulWidget {
 }
 
 class _CardPageState extends State<CardPage> {
-  var cardDetail = CardDetail(
-      1,
-      "Meu Card",
-      "https://hermes.digitalinnovation.one/assets/diome/logo.png",
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
+  CardDetail? cardDetail;
+  CardDetailRepositoy cardDetailRepositoy = CardDetailRepositoy();
+
+  @override
+  void initState() {
+    super.initState();
+    carregarDados();
+  }
+
+  void carregarDados() async {
+    cardDetail = await cardDetailRepositoy.get();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,61 +32,63 @@ class _CardPageState extends State<CardPage> {
         Container(
           width: double.infinity,
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: InkWell(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CardDetailPage(
-                            cardDetail: cardDetail,
-                          )));
-            },
-            child: Hero(
-              tag: cardDetail.id,
-              child: Card(
-                elevation: 8,
-                shadowColor: Colors.grey,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(children: [
-                        Image.network(
-                          cardDetail.url,
-                          height: 20,
+          child: cardDetail == null
+              ? const LinearProgressIndicator()
+              : InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CardDetailPage(
+                                  cardDetail: cardDetail!,
+                                )));
+                  },
+                  child: Hero(
+                    tag: cardDetail!.id,
+                    child: Card(
+                      elevation: 8,
+                      shadowColor: Colors.grey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(children: [
+                              Image.network(
+                                cardDetail!.url,
+                                height: 20,
+                              ),
+                              Text(
+                                cardDetail!.title,
+                                style: const TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w700),
+                              ),
+                            ]),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              cardDetail!.text,
+                              style: const TextStyle(fontSize: 12),
+                              textAlign: TextAlign.justify,
+                            ),
+                            Container(
+                                width: double.infinity,
+                                alignment: Alignment.centerRight,
+                                child: TextButton(
+                                    onPressed: () {},
+                                    child: const Text(
+                                      "Ler mais",
+                                      style: TextStyle(
+                                          decoration: TextDecoration.underline),
+                                    )))
+                          ],
                         ),
-                        Text(
-                          cardDetail.title,
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
-                        ),
-                      ]),
-                      const SizedBox(
-                        height: 10,
                       ),
-                      Text(
-                        cardDetail.text,
-                        style: const TextStyle(fontSize: 12),
-                        textAlign: TextAlign.justify,
-                      ),
-                      Container(
-                          width: double.infinity,
-                          alignment: Alignment.centerRight,
-                          child: TextButton(
-                              onPressed: () {},
-                              child: const Text(
-                                "Ler mais",
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline),
-                              )))
-                    ],
+                    ),
                   ),
                 ),
-              ),
-            ),
-          ),
         ),
       ],
     );
