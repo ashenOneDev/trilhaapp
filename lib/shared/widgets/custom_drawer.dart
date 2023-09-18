@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaap/pages/login_page.dart';
+import 'package:trilhaap/pages/numeros_aleatorios_page.dart';
 
 import '../../pages/dados_cadastro_page.dart';
 
@@ -68,6 +69,32 @@ class CustomDrawer extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const DadosCadastroPage()));
+            },
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.numbers),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Gerador de números"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext bc) =>
+                          const NumerosAleatoriosPage()));
             },
           ),
           const SizedBox(
