@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaap/pages/configuracoes_page.dart';
 import 'package:trilhaap/pages/login_page.dart';
 import 'package:trilhaap/pages/numeros_aleatorios_page.dart';
 
@@ -114,7 +115,13 @@ class CustomDrawer extends StatelessWidget {
                     Text("Configurações"),
                   ],
                 )),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext bc) => const ConfiguracoesPage()));
+            },
           ),
           const SizedBox(
             height: 10,

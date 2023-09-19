@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaap/repositories/linguagens_repository.dart';
 import 'package:trilhaap/repositories/nivel_repository.dart';
+import 'package:trilhaap/services/app_storage_service.dart';
 import 'package:trilhaap/shared/widgets/text_label.dart';
 
 class DadosCadastroPage extends StatefulWidget {
@@ -19,16 +20,30 @@ class _DadosCadastroPageState extends State<DadosCadastroPage> {
   var niveis = [];
   var nivelSelecionado = "";
   var linguagens = [];
-  var linguagensSelecionadas = [];
+  List<String> linguagensSelecionadas = [];
   double salarioEscolhido = 0;
   int tempoExperiencia = 0;
   bool salvando = false;
+  AppStorageService storage = AppStorageService();
 
   @override
   void initState() {
     niveis = nivelRepository.retornaNiveis();
     linguagens = linguagensRepository.retornaLinguagens();
     super.initState();
+    carregarDados();
+  }
+
+  void carregarDados() async {
+    nomeController.text = await storage.getDadosCadastraisNome();
+    dataNascimentoController.text =
+        await storage.getDadosCadastraisDataNascimento();
+    nivelSelecionado = await storage.getDadosCadastraisNivelExperiencia();
+    linguagensSelecionadas = await storage.getDadosCadastraisLinguagens();
+    tempoExperiencia = await storage.getDadosCadastraisTempoExperiencia();
+    salarioEscolhido = await storage.getDadosCadastraisSalario();
+
+    setState(() {});
   }
 
   List<DropdownMenuItem> returnItens(int quantidadeMaxima) {
@@ -132,7 +147,7 @@ class _DadosCadastroPageState extends State<DadosCadastroPage> {
                             });
                           }),
                       TextButton(
-                          onPressed: () {
+                          onPressed: () async {
                             setState(() {
                               salvando = false;
                             });
@@ -186,6 +201,18 @@ class _DadosCadastroPageState extends State<DadosCadastroPage> {
                       debugPrint(tempoExperiencia.toString());
                       debugPrint(salarioEscolhido.round().toString()); */
 
+                            await storage
+                                .setDadosCadastraisNome(nomeController.text);
+                            await storage.setDadosCadastraisDataNascimento(
+                                dataNascimentoController.text);
+                            await storage.setDadosCadastraisNivelExperiencia(
+                                nivelSelecionado);
+                            await storage.setDadosCadastraisLinguagens(
+                                linguagensSelecionadas.toList());
+                            await storage.setDadosCadastraisTempoExperiencia(
+                                tempoExperiencia);
+                            await storage
+                                .setDadosCadastraisSalario(salarioEscolhido);
                             setState(() {
                               salvando = true;
                             });
