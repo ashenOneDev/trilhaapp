@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:trilhaap/pages/configuracoes_page.dart';
 import 'package:trilhaap/pages/login_page.dart';
 import 'package:trilhaap/pages/numeros_aleatorios_page.dart';
+import 'package:trilhaap/shared/app_images.dart';
 
 import '../../pages/dados_cadastro_page.dart';
+import '../../pages/posts_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -45,8 +47,7 @@ class CustomDrawer extends StatelessWidget {
                 decoration: const BoxDecoration(color: Colors.orange),
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.white,
-                  child: Image.network(
-                      "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
+                  child: Image.asset(AppImages.dio),
                 ),
                 accountName: const Text("Iago Cavalcante"),
                 accountEmail: const Text("email@email.com")),
@@ -171,6 +172,30 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           const Divider(),
+          const SizedBox(
+            height: 10,
+          ),
+          InkWell(
+            child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.post_add),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Posts"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext bc) => const PostsPage()));
+            },
+          ),
           const SizedBox(
             height: 10,
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trilhaap/pages/main_page.dart';
+import 'package:trilhaap/shared/app_images.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -34,8 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                   Expanded(child: Container()),
                   Expanded(
                     flex: 8,
-                    child: Image.network(
-                        "https://hermes.digitalinnovation.one/assets/diome/logo.png"),
+                    child: Image.asset(AppImages.dio),
                   ),
                   Expanded(child: Container()),
                 ],

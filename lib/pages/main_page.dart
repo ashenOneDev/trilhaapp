@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trilhaap/pages/consulta_cep_page.dart';
 import 'package:trilhaap/pages/list_view_v_page.dart';
 import 'package:trilhaap/pages/image_assets_page.dart';
 import 'package:trilhaap/pages/tarefa_page.dart';
@@ -38,6 +39,7 @@ class _MainPageState extends State<MainPage> {
                 },
                 scrollDirection: Axis.horizontal,
                 children: const [
+                  ConsultaCepPage(),
                   CardPage(),
                   ImageAssetsPage(),
                   ListViewVPage(),
@@ -53,6 +55,8 @@ class _MainPageState extends State<MainPage> {
                 },
                 currentIndex: posicaoPagina,
                 items: const [
+                  BottomNavigationBarItem(
+                      label: "Http", icon: Icon(Icons.download)),
                   BottomNavigationBarItem(
                       label: "Card", icon: Icon(Icons.home)),
                   BottomNavigationBarItem(
