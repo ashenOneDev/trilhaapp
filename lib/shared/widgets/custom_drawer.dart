@@ -4,6 +4,7 @@ import 'package:trilhaap/pages/login_page.dart';
 import 'package:trilhaap/pages/numeros_aleatorios_page.dart';
 import 'package:trilhaap/shared/app_images.dart';
 
+import '../../pages/characters/characters_page.dart';
 import '../../pages/dados_cadastro_page.dart';
 import '../../pages/posts_page.dart';
 
@@ -74,7 +75,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           const Divider(),
           InkWell(
@@ -100,7 +101,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           const Divider(),
           InkWell(
@@ -125,7 +126,7 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           const Divider(),
           InkWell(
@@ -149,7 +150,7 @@ class CustomDrawer extends StatelessWidget {
                   builder: (BuildContext bc) {
                     return Container(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 16, horizontal: 12),
+                          vertical: 8, horizontal: 12),
                       child: const Column(
                         children: [
                           Text(
@@ -173,7 +174,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           const Divider(),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           InkWell(
             child: Container(
@@ -197,7 +198,31 @@ class CustomDrawer extends StatelessWidget {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
+          ),
+          InkWell(
+            child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.power),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Heróis"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext bc) => const CharactersPage()));
+            },
+          ),
+          const SizedBox(
+            height: 5,
           ),
           InkWell(
             child: Container(
