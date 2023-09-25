@@ -9,6 +9,8 @@ import '../../pages/dados_cadastro_page.dart';
 import '../../pages/posts_page.dart';
 import '../../pages/tarefa_http_page.dart';
 
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
@@ -59,7 +61,10 @@ class CustomDrawer extends StatelessWidget {
                 width: double.infinity,
                 child: const Row(
                   children: [
-                    Icon(Icons.person),
+                    FaIcon(
+                      FontAwesomeIcons.personDrowning,
+                      color: Colors.blue,
+                    ),
                     SizedBox(
                       width: 5,
                     ),

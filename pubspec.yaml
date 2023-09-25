@@ -43,8 +43,10 @@ dependencies:
   dio: ^5.3.3
   crypto: ^3.0.3
   flutter_dotenv: ^5.0.2
+  font_awesome_flutter: ^10.5.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   hive_generator: ^2.0.1
   build_runner: ^2.4.6
   flutter_test:
@@ -98,3 +100,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
