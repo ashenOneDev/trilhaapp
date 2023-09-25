@@ -7,6 +7,7 @@ import 'package:trilhaap/shared/app_images.dart';
 import '../../pages/characters/characters_page.dart';
 import '../../pages/dados_cadastro_page.dart';
 import '../../pages/posts_page.dart';
+import '../../pages/tarefa_http_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -14,8 +15,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           InkWell(
             onTap: () {
@@ -200,6 +200,7 @@ class CustomDrawer extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
+          const Divider(),
           InkWell(
             child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
@@ -221,9 +222,32 @@ class CustomDrawer extends StatelessWidget {
                       builder: (BuildContext bc) => const CharactersPage()));
             },
           ),
+          const Divider(),
+          InkWell(
+            child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                width: double.infinity,
+                child: const Row(
+                  children: [
+                    Icon(Icons.list),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text("Tarefas Http"),
+                  ],
+                )),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext bc) => const TarefaHttpPage()));
+            },
+          ),
           const SizedBox(
             height: 5,
           ),
+          const Divider(),
           InkWell(
             child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
